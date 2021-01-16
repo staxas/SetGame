@@ -25,9 +25,14 @@ public class Table {
     public void addCard(Card card) {
         cardsOnTable.add(card);
     }
+    public void addCardAt(int index, Card card) {
+        cardsOnTable.add(index, card);
+    }
 
-    public void removeCard(Card card) {
+    public int removeCard(Card card) {
+        int index = cardsOnTable.indexOf(card);
         cardsOnTable.remove(card);
+        return index;
     }
     public int getCardIndex(Card card) {
         return cardsOnTable.indexOf(card);

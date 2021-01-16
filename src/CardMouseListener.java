@@ -45,11 +45,9 @@ public class CardMouseListener extends MouseAdapter {
                     }
                 }
                 for(Card card : cardsToRemove) {
-                    table.removeCard(card);
-                }
-                for(int i=0; i<3; i++) {
-                    if(!deck.isEmpty()) {
-                        table.addCard(deck.getCard());
+                    int indexToAddTo = table.removeCard(card);
+                    if (!deck.isEmpty()) {
+                        table.addCardAt(indexToAddTo, deck.getCard());
                     }
                 }
             } else {
