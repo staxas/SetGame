@@ -62,16 +62,16 @@ public class TablePanel extends JPanel {
         int dim = surfaceX / 3;
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
-            g.fillRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) + (i * 5) - (dim), dim, dim);
+            g.fillRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim/2), dim, dim);
         }
 
     }
 
     private void drawCircles(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, Graphics g) {
-        int dim = (int) (surfaceX / 2);
+        int dim = (int) (surfaceX / 2.3);
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
-            g.fillOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) + (i * 5) - (dim / 2), dim, dim);
+            g.fillOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
         }
 
     }
@@ -82,7 +82,7 @@ public class TablePanel extends JPanel {
 
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
-            g.fillOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) + (i * 5) - dimY, dimX, dimY);
+            g.fillOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) - (dimY / 2), dimX, dimY);
         }
 
     }
