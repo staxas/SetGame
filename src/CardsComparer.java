@@ -24,6 +24,7 @@ public class CardsComparer {
             List<Integer> valueCountList = Arrays.asList(valueCount);
             if ((valueCountList.contains(1) && valueCountList.contains(2)) && !valueCountList.contains(3)) {
                 isSet = false;
+                break;
             }
         }
         return isSet;

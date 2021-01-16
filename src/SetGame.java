@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class SetGame extends JPanel{
 
@@ -20,8 +19,5 @@ public class SetGame extends JPanel{
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-
-
-
     }
 }

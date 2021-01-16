@@ -1,16 +1,12 @@
 import java.util.Arrays;
 
 public class Card {
-    private Integer[] cardVals = new Integer[3];
+    private Integer[] cardVals;
 
     private int locationX=0;
     private int locationY=0;
 
     private boolean isSelected=false;
-
-    public Card() {
-        Arrays.fill(cardVals, 0);
-    }
 
     public Card(Integer[] cardArr) {
         this.cardVals = Arrays.copyOf(cardArr, cardArr.length);
@@ -18,16 +14,6 @@ public class Card {
 
     public Integer[] getValues() {
         return cardVals;
-    }
-
-    public void setCardVals(Integer[] cardVals) {
-        this.cardVals = cardVals;
-    }
-
-    public void setValues(int value1, int value2, int value3) {
-        cardVals[0] = value1;
-        cardVals[1] = value2;
-        cardVals[2] = value3;
     }
 
     public Integer[] clone() {

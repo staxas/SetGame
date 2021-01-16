@@ -22,10 +22,6 @@ public class DeckOfCards {
         return deck.isEmpty();
     }
 
-    public int size() {
-        return deck.size();
-    }
-
     public void makeDeck() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

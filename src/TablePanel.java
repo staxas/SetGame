@@ -51,11 +51,8 @@ public class TablePanel extends JPanel {
                     this.drawStripes(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], g);
                     break;
             }
-
             i++;
         }
-
-
     }
 
     private void drawSquares(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, Graphics g) {
@@ -64,7 +61,6 @@ public class TablePanel extends JPanel {
         for (int i = 0; i < numberOfShapes + 1; i++) {
             g.fillRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim/2), dim, dim);
         }
-
     }
 
     private void drawCircles(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, Graphics g) {
@@ -73,7 +69,6 @@ public class TablePanel extends JPanel {
         for (int i = 0; i < numberOfShapes + 1; i++) {
             g.fillOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
         }
-
     }
 
     private void drawStripes(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, Graphics g) {
@@ -84,7 +79,6 @@ public class TablePanel extends JPanel {
         for (int i = 0; i < numberOfShapes + 1; i++) {
             g.fillOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) - (dimY / 2), dimX, dimY);
         }
-
     }
 }
 
