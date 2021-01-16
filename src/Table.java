@@ -4,11 +4,19 @@ import java.util.List;
 public class Table {
     List<Card> cardsOnTable = new ArrayList<>();
 
-    int tableSizeX=300;
-    int tableSizeY=500;
-    int cardSizeX=50;
-    int cardSizeY=100;
-    int margin = 20;
+    int tableSizeX;
+    int tableSizeY;
+    int cardSizeX;
+    int cardSizeY;
+    int margin;
+
+    public Table(int cardSizeX, int cardSizeY, int margin) {
+        this.cardSizeX = cardSizeX;
+        this.cardSizeY = cardSizeY;
+        this.margin = margin;
+        tableSizeX=(cardSizeX * 4 ) + (margin * 5);
+        tableSizeY=(cardSizeY * 3 ) + (margin * 4);
+    }
 
     public List<Card> getCardsOnTable() {
         return cardsOnTable;
