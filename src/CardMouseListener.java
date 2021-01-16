@@ -36,7 +36,6 @@ public class CardMouseListener extends MouseAdapter {
                     cardsToCheckForSet.add(card);
                 }
             }
-            System.out.println(cardsComparer.isSet(cardsToCheckForSet));
             if (cardsComparer.isSet(cardsToCheckForSet)) {
                 List<Card> cardsToRemove = new ArrayList<>();
                 for(Card card : table.getCardsOnTable()) {
