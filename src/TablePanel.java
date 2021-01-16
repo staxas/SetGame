@@ -17,8 +17,10 @@ public class TablePanel extends JPanel {
         int y;
         for (Card card : table.getCardsOnTable()) {
 
-            x = table.margin + ((i / 3) * table.cardSizeX) + ((i / 3) * table.margin);
+            x = table.margin + ((i / 3) * table.cardSizeX) + ((i / 3) * table.margin );
             y = table.margin + ((i % 3) * table.cardSizeY ) + ((i % 3) * table.margin);
+            System.out.println(table.cardSizeY + " " + table.tableSizeY);
+            System.out.println((table.margin) + " " + ((i % 3) * table.cardSizeY ) + " " +  ((i % 3) * table.margin));
             card.setLocationX(x);
             card.setLocationY(y);
 
