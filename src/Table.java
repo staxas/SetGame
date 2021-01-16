@@ -4,8 +4,8 @@ import java.util.List;
 public class Table {
     List<Card> cardsOnTable = new ArrayList<>();
 
-    int tableSizeX=100;
-    int tableSizeY=800;
+    int tableSizeX=300;
+    int tableSizeY=500;
     int cardSizeX=50;
     int cardSizeY=100;
     int margin = 20;
@@ -18,6 +18,9 @@ public class Table {
         cardsOnTable.add(card);
     }
 
+    public void removeCard(Card card) {
+        cardsOnTable.remove(card);
+    }
     public int getCardIndex(Card card) {
         return cardsOnTable.indexOf(card);
     }

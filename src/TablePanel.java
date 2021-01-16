@@ -10,11 +10,13 @@ public class TablePanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(0,0, table.tableSizeX, table.tableSizeY);
         int i = 0;
         int x;
         int y;
         for (Card card : table.getCardsOnTable()) {
+
             x = table.margin + ((i / 3) * table.cardSizeX) + ((i / 3) * table.margin);
             y = table.margin + ((i % 3) * (table.cardSizeY + table.margin)) + ((i % 3) * (table.margin));
             card.setLocationX(x);

@@ -10,11 +10,14 @@ public class CardMouseListener extends MouseAdapter {
 
     private Table table;
 
+    private DeckOfCards deck;
+
     private CardsComparer cardsComparer = new CardsComparer();
 
-    public CardMouseListener(TablePanel tablePanel, Table table) {
+    public CardMouseListener(TablePanel tablePanel, Table table, DeckOfCards deck) {
         this.tablePanel = tablePanel;
         this.table = table;
+        this.deck = deck;
     }
 
     @Override
@@ -34,7 +37,25 @@ public class CardMouseListener extends MouseAdapter {
                 }
             }
             System.out.println(cardsComparer.isSet(cardsToCheckForSet));
-            table.unselectAllCards();
+            if (cardsComparer.isSet(cardsToCheckForSet)) {
+                List<Card> cardsToRemove = new ArrayList<>();
+                for(Card card : table.getCardsOnTable()) {
+                    if(card.isSelected()) {
+                        cardsToRemove.add(card);
+
+                    }
+                }
+                for(Card card : cardsToRemove) {
+                    table.removeCard(card);
+                }
+                for(int i=0; i<3; i++) {
+                    if(!deck.isEmpty()) {
+                        table.addCard(deck.getCard());
+                    }
+                }
+            } else {
+                table.unselectAllCards();
+            }
             tablePanel.repaint();
 
         }
