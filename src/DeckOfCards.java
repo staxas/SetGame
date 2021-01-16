@@ -13,15 +13,7 @@ public class DeckOfCards {
 
     public Integer[] getCard() {
         if(!deck.isEmpty()) {
-            return deck.remove(rand.nextInt(deck.size()));
-        } else {
-            return null;
-        }
-    }
-
-    public Integer[] getNextCard() {
-        if(!deck.isEmpty()) {
-            return deck.remove(0);
+            return deck.remove(rand.nextInt((deck.size())));
         } else {
             return null;
         }
@@ -29,6 +21,10 @@ public class DeckOfCards {
 
     public boolean isEmpty() {
         return deck.isEmpty();
+    }
+
+    public int size() {
+        return deck.size();
     }
 
     public void makeDeck() {

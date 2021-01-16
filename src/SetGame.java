@@ -7,7 +7,7 @@ public class SetGame {
         DeckOfCards deckOfCards = new DeckOfCards();
         boolean foundSet=false;
         while(!foundSet) {
-            if(deckOfCards.isEmpty()) {
+            if(deckOfCards.size() < 3) {
                 deckOfCards = new DeckOfCards();
             }
             Integer[][] cards = new Integer[3][3];
@@ -22,10 +22,8 @@ public class SetGame {
             }
 
             Integer[][] valueCounts = new Integer[3][3];
-            Arrays.fill(valueCounts[0], 0);
-            Arrays.fill(valueCounts[1], 0);
-            Arrays.fill(valueCounts[2], 0);
             for (int i = 0; i < 3; i++) {
+                Arrays.fill(valueCounts[i], 0);
                 for (int j = 0; j < 3; j++) {
                     for (int k = 0; k < 3; k++) {
                         valueCounts[i][j] += (cards[k][i] == j ? 1 : 0);
