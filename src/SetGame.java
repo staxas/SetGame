@@ -49,7 +49,7 @@ public class SetGame {
             if (isSet) {
                 System.out.println("SET!");
                 foundSet=true;
-            } 
+            }
         }
     }
 }
