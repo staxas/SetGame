@@ -10,13 +10,15 @@ public class TablePanel extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, table.tableSizeX, table.tableSizeY);
-        g.setColor(Color.RED);
-        g.fillRect(table.margin, table.tableSizeY - (int)(table.margin * 2.3), table.margin, table.margin);
-        g.setColor(Color.BLACK);
-        g.fillRect(table.margin+(table.margin/3), table.tableSizeY - (int)(table.margin * 2.3), table.margin/3, table.margin);
-        g.fillRect(table.margin, table.tableSizeY - (int)(table.margin * 2.3)+(table.margin/3), table.margin, table.margin/3);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setStroke(new BasicStroke(2));
+        g2.setColor(Color.LIGHT_GRAY);
+        g2.fillRect(0, 0, table.tableSizeX, table.tableSizeY);
+        g2.setColor(Color.RED);
+        g2.fillRect(table.margin, table.tableSizeY - (int)(table.margin * 2.3), table.margin, table.margin);
+        g2.setColor(Color.BLACK);
+        g2.fillRect(table.margin+(table.margin/3), table.tableSizeY - (int)(table.margin * 2.3), table.margin/3, table.margin);
+        g2.fillRect(table.margin, table.tableSizeY - (int)(table.margin * 2.3)+(table.margin/3), table.margin, table.margin/3);
 
         int i = 0;
         int x;
@@ -28,40 +30,41 @@ public class TablePanel extends JPanel {
             card.setLocationX(x);
             card.setLocationY(y);
 
-            g.setColor(Color.WHITE);
-            g.fillRect(x, y, table.cardSizeX, table.cardSizeY);
+            g2.setColor(Color.WHITE);
+            g2.fillRect(x, y, table.cardSizeX, table.cardSizeY);
             if (card.isSelected()) {
-                g.setColor(Color.BLACK);
+                g2.setColor(Color.BLACK);
             }
-            g.drawRect(x, y, table.cardSizeX, table.cardSizeY);
+            g2.setStroke(new BasicStroke(2));
+            g2.drawRect(x, y, table.cardSizeX, table.cardSizeY);
 
             switch (card.getValues()[0]) {
                 case 0:
-                    g.setColor(Color.RED);
+                    g2.setColor(Color.RED);
                     break;
                 case 1:
-                    g.setColor(Color.BLUE);
+                    g2.setColor(Color.BLUE);
                     break;
                 case 2:
-                    g.setColor(Color.GREEN);
+                    g2.setColor(Color.GREEN);
                     break;
             }
             switch (card.getValues()[1]) {
                 case 0:
-                    this.drawSquares(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g);
+                    this.drawSquares(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g2);
                     break;
                 case 1:
-                    this.drawCircles(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g);
+                    this.drawCircles(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g2);
                     break;
                 case 2:
-                    this.drawStripes(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g);
+                    this.drawStripes(x, y, table.cardSizeX, table.cardSizeY, card.getValues()[2], card.getValues()[3], g2);
                     break;
             }
             i++;
         }
     }
 
-    private void drawSquares(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics g) {
+    private void drawSquares(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics2D g) {
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
             int dim = surfaceX / 3;
@@ -70,10 +73,12 @@ public class TablePanel extends JPanel {
                     g.fillRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                     break;
                 case 1:
+                    g.setStroke(new BasicStroke(2));
                     g.drawRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                     break;
                 case 2:
                     while (dim > 0) {
+                        g.setStroke(new BasicStroke(1));
                         g.drawRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                         dim -= 4;
                     }
@@ -83,7 +88,7 @@ public class TablePanel extends JPanel {
         }
     }
 
-    private void drawCircles(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics g) {
+    private void drawCircles(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics2D g) {
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
             int dim = (int) (surfaceX / 2.3);
@@ -92,9 +97,13 @@ public class TablePanel extends JPanel {
                     g.fillOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                     break;
                 case 1:
+                    g.setStroke(new BasicStroke(2));
+
                     g.drawOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                     break;
                 case 2:
+                    g.setStroke(new BasicStroke(1));
+
                     while(dim>0) {
                         g.drawOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                         dim-=4;
@@ -104,7 +113,7 @@ public class TablePanel extends JPanel {
         }
     }
 
-    private void drawStripes(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics g) {
+    private void drawStripes(int x, int y, int surfaceX, int surfaceY, int numberOfShapes, int texture, Graphics2D g) {
         int eachShape = surfaceY / (numberOfShapes + 2);
         for (int i = 0; i < numberOfShapes + 1; i++) {
             int dimX = (int) (surfaceX / 1.5);
@@ -114,9 +123,11 @@ public class TablePanel extends JPanel {
                 g.fillOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) - (dimY / 2), dimX, dimY);
                 break;
                 case 1:
+                    g.setStroke(new BasicStroke(2));
                     g.drawOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) - (dimY / 2), dimX, dimY);
                     break;
                 case 2:
+                    g.setStroke(new BasicStroke(1));
                     while(dimX>0 && dimY >0) {
                         g.drawOval((x + (surfaceX / 2)) - (dimX / 2), y + eachShape * (i + 1) - (dimY / 2), dimX, dimY);
                         dimX-=3;
