@@ -77,8 +77,8 @@ public class TablePanel extends JPanel {
                     g.drawRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                     break;
                 case 2:
+                    g.setStroke(new BasicStroke(1));
                     while (dim > 0) {
-                        g.setStroke(new BasicStroke(1));
                         g.drawRect((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                         dim -= 4;
                     }
@@ -103,7 +103,6 @@ public class TablePanel extends JPanel {
                     break;
                 case 2:
                     g.setStroke(new BasicStroke(1));
-
                     while(dim>0) {
                         g.drawOval((x + (surfaceX / 2)) - (dim / 2), y + eachShape * (i + 1) - (dim / 2), dim, dim);
                         dim-=4;
