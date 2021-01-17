@@ -14,8 +14,8 @@ public class Table {
         this.cardSizeX = cardSizeX;
         this.cardSizeY = cardSizeY;
         this.margin = margin;
-        tableSizeX=(cardSizeX * 4 ) + (int)(margin * 5.2);
-        tableSizeY=(cardSizeY * 3 ) + (int)(margin * 4.5);
+        tableSizeX=(cardSizeX * 6 ) + (int)(margin * 8);
+        tableSizeY=(cardSizeY * 3 ) + (int)(margin * 6);
     }
 
     public List<Card> getCardsOnTable() {
