@@ -22,5 +22,5 @@ The >> appends the jar to the receiving file.
 
 This will create a file that has the bash hashbang and the jar appended to it. Next set setgame to executable and try to run the program.
 
-$ chmod +x setgame
+$ chmod +x setgame  
 $ ./setgame
