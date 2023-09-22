@@ -15,8 +15,8 @@ public class CardsComparer {
 
         Integer[][] cards = new Integer[CARDS_NO][PATTS_NO];
 
-        for (int cardsIndex = 0; cardsIndex < CARDS_NO; cardsIndex++) { 
-            cards[cardsIndex] = cardList.get(cardsIndex).getValues();
+        for (int cardIndex = 0; cardIndex < CARDS_NO; cardIndex++) { 
+            cards[cardIndex] = cardList.get(cardIndex).getValues();
         }
 
 
@@ -26,8 +26,8 @@ public class CardsComparer {
             Arrays.fill(valueCounts[patternIndex], 0);
 
             for (int dimensionIndex = 0; dimensionIndex < DIMS_NO; dimensionIndex++) {
-                for (int cardsIndex = 0; cardsIndex < CARDS_NO; cardsIndex++) {
-                    if (cards[cardsIndex][patternIndex] == dimensionIndex) {
+                for (int cardIndex = 0; cardIndex < CARDS_NO; cardIndex++) {
+                    if (cards[cardIndex][patternIndex] == dimensionIndex) {
                         valueCounts[patternIndex][dimensionIndex] ++;
                     }
                 }
