@@ -28,7 +28,7 @@ public class Table {
     public void initTable() {
         cardsOnTable.clear();
         for(int i=0; i<12; i++) {
-            addCard(deck.getCard());
+            this.addCard(deck.getCard());
         }
     }
 
