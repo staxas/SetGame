@@ -4,29 +4,31 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CardsComparer {
-    // Number of card pattern dimensions
-    private final int DIMS_NO = 4;
+    // Number of card patterns
+    private final int PATTS_NO = 4;
+    // Number of dimensions per card pattern
+    private final int DIMS_NO = 3;
     // Number of cards to compare
     private final int CARDS_NO = 3;
-
+    
     public boolean isSet(List<Card> cardList) {
 
-        Integer[][] cards = new Integer[CARDS_NO][DIMS_NO];
+        Integer[][] cards = new Integer[CARDS_NO][PATTS_NO];
 
-        for (int i = 0; i < CARDS_NO; i++) { 
-            cards[i] = cardList.get(i).getValues();
+        for (int cardsIndex = 0; cardsIndex < CARDS_NO; cardsIndex++) { 
+            cards[cardsIndex] = cardList.get(cardsIndex).getValues();
         }
 
 
-        Integer[][] valueCounts = new Integer[DIMS_NO][CARDS_NO];
+        Integer[][] valueCounts = new Integer[PATTS_NO][DIMS_NO];
 
-        for (int i = 0; i < DIMS_NO; i++) {
-            Arrays.fill(valueCounts[i], 0);
+        for (int patternIndex = 0; patternIndex < PATTS_NO; patternIndex++) {
+            Arrays.fill(valueCounts[patternIndex], 0);
 
-            for (int j = 0; j < CARDS_NO; j++) {
-                for (int k = 0; k < CARDS_NO; k++) {
-                    if (cards[k][i] == j) {
-                        valueCounts[i][j] ++;
+            for (int dimensionIndex = 0; dimensionIndex < DIMS_NO; dimensionIndex++) {
+                for (int cardsIndex = 0; cardsIndex < CARDS_NO; cardsIndex++) {
+                    if (cards[cardsIndex][patternIndex] == dimensionIndex) {
+                        valueCounts[patternIndex][dimensionIndex] ++;
                     }
                 }
             }
