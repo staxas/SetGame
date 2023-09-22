@@ -1,3 +1,5 @@
+package nl.edwinrietmeijer.setgame;
+
 import java.util.Arrays;
 
 public class Card {

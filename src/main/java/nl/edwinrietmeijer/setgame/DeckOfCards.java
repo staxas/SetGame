@@ -1,3 +1,5 @@
+package nl.edwinrietmeijer.setgame;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,7 +24,12 @@ public class DeckOfCards {
         return deck.isEmpty();
     }
 
+    public int size() {
+        return deck.size();
+    }
+
     public void makeDeck() {
+        deck.clear();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 for (int k = 0; k < 3; k++) {

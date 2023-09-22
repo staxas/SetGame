@@ -1,3 +1,5 @@
+package nl.edwinrietmeijer.setgame;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -21,7 +23,14 @@ public class CardMouseListener extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if((e.getX() > table.margin && e.getX() < (table.tableSizeY - (int)(table.margin * 2.3) + table.margin)) &&
+        if((e.getX() > (table.tableSizeX - (int)(table.margin * 2.3)) && e.getX() < (table.tableSizeX - (int)(table.margin * 2.3) + table.margin)) &&
+        (e.getY() > table.tableSizeY - (int)(table.margin * 2.3) && e.getY() < table.tableSizeY - (int)(table.margin * 2.3) + table.margin)) {
+            deck.makeDeck();
+            table.initTable();
+            tablePanel.repaint();
+        }
+
+        if((e.getX() > table.margin && e.getX() < (table.margin * 2)) &&
         (e.getY() > table.tableSizeY - (int)(table.margin * 2.3) && e.getY() < table.tableSizeY - (int)(table.margin * 2.3) + table.margin)) {
                 for(int i=0; i< 3; i++) {
                     if (!deck.isEmpty() && table.cardsOnTable.size() < 18) {

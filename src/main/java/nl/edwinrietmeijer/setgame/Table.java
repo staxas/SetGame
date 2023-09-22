@@ -1,8 +1,12 @@
+package nl.edwinrietmeijer.setgame;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
     List<Card> cardsOnTable = new ArrayList<>();
+
+    DeckOfCards deck;
 
     int tableSizeX;
     int tableSizeY;
@@ -10,12 +14,22 @@ public class Table {
     int cardSizeY;
     int margin;
 
-    public Table(int cardSizeX, int cardSizeY, int margin) {
+    public Table(int cardSizeX, int cardSizeY, int margin, DeckOfCards deck) {
+        this.deck = deck;
         this.cardSizeX = cardSizeX;
         this.cardSizeY = cardSizeY;
         this.margin = margin;
         tableSizeX=(cardSizeX * 6 ) + (int)(margin * 8);
         tableSizeY=(cardSizeY * 3 ) + (int)(margin * 6);
+
+        this.initTable();
+    }
+
+    public void initTable() {
+        cardsOnTable.clear();
+        for(int i=0; i<12; i++) {
+            addCard(deck.getCard());
+        }
     }
 
     public List<Card> getCardsOnTable() {

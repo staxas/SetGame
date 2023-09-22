@@ -1,13 +1,13 @@
+package nl.edwinrietmeijer.setgame;
+
 import javax.swing.*;
 
 public class SetGame extends JPanel{
 
     public static void main(String args[]) {
         DeckOfCards deckOfCards = new DeckOfCards();
-        Table table = new Table(80, 150, 50);
-        for(int i=0; i<12; i++) {
-            table.addCard(deckOfCards.getCard());
-        }
+        Table table = new Table(80, 150, 50, deckOfCards);
+ 
 
         JFrame frame = new JFrame("SetTable");
         TablePanel panel = new TablePanel(table);

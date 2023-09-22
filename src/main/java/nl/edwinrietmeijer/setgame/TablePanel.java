@@ -1,3 +1,5 @@
+package nl.edwinrietmeijer.setgame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,6 +21,14 @@ public class TablePanel extends JPanel {
         g2.setColor(Color.BLACK);
         g2.fillRect(table.margin+(table.margin/3), table.tableSizeY - (int)(table.margin * 2.3), table.margin/3, table.margin);
         g2.fillRect(table.margin, table.tableSizeY - (int)(table.margin * 2.3)+(table.margin/3), table.margin, table.margin/3);
+
+        
+        g2.setColor(Color.BLUE);
+        g2.fillRect(table.tableSizeX - (int)(table.margin * 2.3), table.tableSizeY - (int)(table.margin * 2.3), table.margin, table.margin);
+
+        g2.setColor(Color.BLACK);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
+        g2.drawString(String.valueOf(table.deck.size()), 20,20);
 
         int i = 0;
         int x;
