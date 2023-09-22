@@ -25,7 +25,9 @@ public class CardsComparer {
 
             for (int j = 0; j < CARDS_NO; j++) {
                 for (int k = 0; k < CARDS_NO; k++) {
-                    valueCounts[i][j] += (cards[k][i] == j ? 1 : 0);
+                    if (cards[k][i] == j) {
+                        valueCounts[i][j] ++;
+                    }
                 }
             }
         }
