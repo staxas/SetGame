@@ -12,7 +12,7 @@ public class SetGame extends JPanel{
         JFrame frame = new JFrame("SetTable");
         TablePanel panel = new TablePanel(table);
         frame.setContentPane(panel);
-        panel.addMouseListener(new CardMouseListener(panel, table, deckOfCards));
+        panel.addMouseListener(new TableMouseListener(panel, table, deckOfCards));
 
         frame.add(new TablePanel(table));
         frame.setSize(table.tableSizeX, table.tableSizeY);

@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardMouseListener extends MouseAdapter {
+public class TableMouseListener extends MouseAdapter {
 
     private TablePanel tablePanel;
 
@@ -19,7 +19,7 @@ public class CardMouseListener extends MouseAdapter {
 
     private final int MIN_NO_FOR_NEW_COLUMN = 9;
 
-    public CardMouseListener(TablePanel tablePanel, Table table, DeckOfCards deck) {
+    public TableMouseListener(TablePanel tablePanel, Table table, DeckOfCards deck) {
         this.tablePanel = tablePanel;
         this.table = table;
         this.deck = deck;
