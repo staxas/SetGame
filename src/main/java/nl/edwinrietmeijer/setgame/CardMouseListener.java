@@ -15,6 +15,10 @@ public class CardMouseListener extends MouseAdapter {
 
     private CardsComparer cardsComparer = new CardsComparer();
 
+    private final int SELECTED_CARDS_NO = 3;
+
+    private final int MIN_NO_FOR_NEW_COLUMN = 9;
+
     public CardMouseListener(TablePanel tablePanel, Table table, DeckOfCards deck) {
         this.tablePanel = tablePanel;
         this.table = table;
@@ -23,6 +27,8 @@ public class CardMouseListener extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
+        // Restart game button
         if((e.getX() > (table.tableSizeX - (int)(table.margin * 2.3)) && e.getX() < (table.tableSizeX - (int)(table.margin * 2.3) + table.margin)) &&
         (e.getY() > table.tableSizeY - (int)(table.margin * 2.3) && e.getY() < table.tableSizeY - (int)(table.margin * 2.3) + table.margin)) {
             deck.makeDeck();
@@ -30,6 +36,7 @@ public class CardMouseListener extends MouseAdapter {
             tablePanel.repaint();
         }
 
+        // Next row of cards button
         if((e.getX() > table.margin && e.getX() < (table.margin * 2)) &&
         (e.getY() > table.tableSizeY - (int)(table.margin * 2.3) && e.getY() < table.tableSizeY - (int)(table.margin * 2.3) + table.margin)) {
                 for(int i=0; i< 3; i++) {
@@ -39,6 +46,8 @@ public class CardMouseListener extends MouseAdapter {
                 }
                 tablePanel.repaint();
         }
+
+        // Select a card
         for(Card card : table.getCardsOnTable()) {
             if((e.getX() > card.getLocationX() && e.getX() < card.getLocationX() + table.cardSizeX ) &&
             (e.getY() > card.getLocationY() && e.getY() < card.getLocationY() + table.cardSizeY )) {
@@ -46,32 +55,28 @@ public class CardMouseListener extends MouseAdapter {
                 tablePanel.repaint();
             }
         }
-        if(table.countSelectedCards() == 3) {
-            List<Card> cardsToCheckForSet = new ArrayList<>();
+
+        if(table.countSelectedCards() == SELECTED_CARDS_NO) {
+            List<Card> selectedCards = new ArrayList<>();
             for(Card card : table.getCardsOnTable()) {
                 if(card.isSelected()) {
-                    cardsToCheckForSet.add(card);
+                    selectedCards.add(card);
                 }
             }
-            if (cardsComparer.isSet(cardsToCheckForSet)) {
-                List<Card> cardsToRemove = new ArrayList<>();
-                for(Card card : table.getCardsOnTable()) {
-                    if(card.isSelected()) {
-                        cardsToRemove.add(card);
 
-                    }
-                }
+            if (cardsComparer.isSet(selectedCards)) {
                 boolean enoughSpaceOnTable=false;
-                if(table.cardsOnTable.size() <= 12){
+                
+                if(table.cardsOnTable.size() <= MIN_NO_FOR_NEW_COLUMN + SELECTED_CARDS_NO){
                     enoughSpaceOnTable=true;
-
                 }
-                    for (Card card : cardsToRemove) {
-                        int indexToAddTo = table.removeCard(card);
-                        if (!deck.isEmpty() && enoughSpaceOnTable) {
-                            table.addCardAt(indexToAddTo, deck.getCard());
-                        }
+
+                for (Card card : selectedCards) {
+                    int indexToAddTo = table.removeCard(card);
+                    if (!deck.isEmpty() && enoughSpaceOnTable) {
+                        table.addCardAt(indexToAddTo, deck.getCard());
                     }
+                }
 
             } else {
                 table.unselectAllCards();
