@@ -5,30 +5,30 @@ import java.util.List;
 
 public class CardsComparer {
     // Number of card patterns
-    private final int PATTS_NO = 4;
-    // Number of dimensions per card pattern
-    private final int DIMS_NO = 3;
+    private final int PATTERNS_NO = 4;
+    // Number of states per card pattern
+    private final int STATES_NO = 3;
     // Number of cards to compare
     private final int CARDS_NO = 3;
     
     public boolean isSet(List<Card> cardList) {
 
-        Integer[][] cards = new Integer[CARDS_NO][PATTS_NO];
+        Integer[][] cards = new Integer[CARDS_NO][PATTERNS_NO];
 
         for (int cardIndex = 0; cardIndex < CARDS_NO; cardIndex++) { 
             cards[cardIndex] = cardList.get(cardIndex).getValues();
         }
 
 
-        Integer[][] valueCounts = new Integer[PATTS_NO][DIMS_NO];
+        Integer[][] valueCounts = new Integer[PATTERNS_NO][STATES_NO];
 
-        for (int patternIndex = 0; patternIndex < PATTS_NO; patternIndex++) {
+        for (int patternIndex = 0; patternIndex < PATTERNS_NO; patternIndex++) {
             Arrays.fill(valueCounts[patternIndex], 0);
 
-            for (int dimensionIndex = 0; dimensionIndex < DIMS_NO; dimensionIndex++) {
+            for (int stateIndex = 0; stateIndex < STATES_NO; stateIndex++) {
                 for (int cardIndex = 0; cardIndex < CARDS_NO; cardIndex++) {
-                    if (cards[cardIndex][patternIndex] == dimensionIndex) {
-                        valueCounts[patternIndex][dimensionIndex] ++;
+                    if (cards[cardIndex][patternIndex] == stateIndex) {
+                        valueCounts[patternIndex][stateIndex] ++;
                     }
                 }
             }
